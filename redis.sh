@@ -24,8 +24,6 @@ VALIDATE(){
     fi
 }
 
-cp mongo.repo /etc/yum.repos.d/mongo.repo
-VALIDATE $? "Copying Mongo Repo" 
 
 dnf module disable redis -y &>>$LOGS_FILE
 VALIDATE $? "Disabling Latest redis Server"
