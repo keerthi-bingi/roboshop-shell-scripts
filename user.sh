@@ -26,13 +26,13 @@ VALIDATE(){
 }
 
 
-dnf module disable nodejs -y
+dnf module disable nodejs -y &>>$LOGS_FILE
 VALIDATE $? "Disabling nodejs latest version"
 
-dnf module enable nodejs:20 -y
+dnf module enable nodejs:20 -y &>>$LOGS_FILE
 VALIDATE $? "Enabling nodejs 20"
 
-dnf install nodejs -y
+dnf install nodejs -y &>>$LOGS_FILE
 VALIDATE $? "Installing nodejs 20"
 
 id roboshop &>>$LOGS_FILE
@@ -64,8 +64,8 @@ VALIDATE $? "Installing dependencies"
 cp $SCRIPT_DIR/user.service /etc/systemd/system/user.service
 VALIDATE $? "Created systemctl service"
 
-systemctl daemon-reload
-systemctl enable user 
+systemctl daemon-reload &>>$LOGS_FILE
+systemctl enable user &>>$LOGS_FILE
 
-systemctl start user
+systemctl start user &>>$LOGS_FILE
 VALIDATE $? "Started User service"
