@@ -61,7 +61,7 @@ VALIDATE $? "Uzip user code"
 npm install  &>>$LOGS_FILE
 VALIDATE $? "Installing dependencies"
 
-cp SCRIPT_DIR/cart.service /etc/systemd/system/cart.service
+cp $SCRIPT_DIR/cart.service /etc/systemd/system/cart.service
 VALIDATE $? "Created systemctl service"
 
 systemctl daemon-reload &>>$LOGS_FILE
