@@ -60,6 +60,9 @@ VALIDATE $? "Getting the deps"
 go build &>>$LOGS_FILE
 VALIDATE $? "Building the deps"
 
+cp $SCRIPT_DIR/dispatch.service /etc/systemd/system/dispatch.service &>>$LOGS_FILE
+VALIDATE $? "Creating systemctl service"
+
 systemctl daemon-reload
 VALIDATE $? "Load the service"
 
